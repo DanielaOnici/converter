@@ -68,6 +68,7 @@ namespace Converter
             this.btnFahrenheitCelsius.TabIndex = 2;
             this.btnFahrenheitCelsius.Text = "Fahrenheit to Celsius";
             this.btnFahrenheitCelsius.UseVisualStyleBackColor = true;
+            this.btnFahrenheitCelsius.Click += new System.EventHandler(this.btnFahrenheitCelsius_Click);
             // 
             // btnFeetMeters
             // 
@@ -77,6 +78,7 @@ namespace Converter
             this.btnFeetMeters.TabIndex = 3;
             this.btnFeetMeters.Text = "Feet to Meters";
             this.btnFeetMeters.UseVisualStyleBackColor = true;
+            this.btnFeetMeters.Click += new System.EventHandler(this.btnFeetMeters_Click);
             // 
             // btnMeterFeet
             // 
@@ -86,6 +88,7 @@ namespace Converter
             this.btnMeterFeet.TabIndex = 4;
             this.btnMeterFeet.Text = "Meters to Feet";
             this.btnMeterFeet.UseVisualStyleBackColor = true;
+            this.btnMeterFeet.Click += new System.EventHandler(this.btnMeterFeet_Click);
             // 
             // btnKilogramPounds
             // 

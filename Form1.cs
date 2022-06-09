@@ -46,9 +46,57 @@ namespace Converter
             }
             else
             {
-                lblResultMessage.Text = "Input number incorrect. Please insert a valid number";
+                lblResultMessage.Text = "Invalid number. Please insert a valid number";
             }
 
+        }
+
+        private void btnFahrenheitCelsius_Click(object sender, EventArgs e)
+        {
+            Regex numberRegex = new Regex(@"^-?[0-9][0-9,\.]+$");
+
+            if (numberRegex.IsMatch(txtBox.Text.Trim()))
+            {
+                double number = double.Parse(txtBox.Text);
+                double result = (number - 32) * 0.5556;
+                lblResultMessage.Text = $"{Math.Round(result, 2)} Celsius";
+            }
+            else
+            {
+                lblResultMessage.Text = "Invalid number. Please insert a valid number";
+            }
+        }
+
+        private void btnFeetMeters_Click(object sender, EventArgs e)
+        {
+            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
+
+            if (numberRegex.IsMatch(txtBox.Text.Trim()))
+            {
+                double number = double.Parse(txtBox.Text);
+                double result = number / 3.2808;
+                lblResultMessage.Text = $"{Math.Round(result, 2)} meters";
+            }
+            else
+            {
+                lblResultMessage.Text = "Invalid number. Please insert a valid number";
+            }
+        }
+
+        private void btnMeterFeet_Click(object sender, EventArgs e)
+        {
+            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
+
+            if (numberRegex.IsMatch(txtBox.Text.Trim()))
+            {
+                double number = double.Parse(txtBox.Text);
+                double result = number * 3.2808;
+                lblResultMessage.Text = $"{Math.Round(result, 2)} meters";
+            }
+            else
+            {
+                lblResultMessage.Text = "Invalid number. Please insert a valid number";
+            }
         }
     }
 }
