@@ -35,13 +35,12 @@ namespace Converter
         }
         
         //Method to calculate de temperatures
-        private void CalculatingTemperature(out string txt, ref int formula)
+        private void CalculatingTemperature(ref int formula)
         {
             //Setting up a regular expression to the input (accepting negative and decimal numbers)
-            Regex numberRegex = new Regex(@"^-?[0-9][0-9,\.]+$");
-            txt = txtBox.Text;
+            Regex numberRegex = new Regex(@"^-?[0-9]\d*(\.\d+)?$");
 
-            if(txt == null || !(numberRegex.IsMatch(txt.Trim())))
+            if(txtBox.Text == "" || !(numberRegex.IsMatch(txtBox.Text.Trim())))
             {
                 lblResultMessage.Text = "Invalid number. Please insert a valid number";
             }
@@ -51,23 +50,22 @@ namespace Converter
                 {
                     case 1:
                         //Calculating C to F and rounding the number to two decimals
-                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txt) * 1.8) + 32), 2)} Fahrenheit";
+                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txtBox.Text) * 1.8) + 32), 2)} Fahrenheit";
                         break;
                     case 2:
                         //Calculating F to C and rounding the number to two decimals
-                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txt) - 32) * 0.556), 2)} Celsius";
+                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txtBox.Text) - 32) * 0.556), 2)} Celsius";
                         break;
                 }
             }
         }
 
-        private void CalculatingMeasures(out string text, ref int formulaX)
+        private void CalculatingMeasures(ref int formulaX)
         {
             //Setting up a regular expression to the input (accepting decimal numbers)
-            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
-            text = txtBox.Text;
+            Regex numberRegex = new Regex(@"^[0-9]\d*(\.\d+)?$");
 
-            if(txtBox.Text == null || !(numberRegex.IsMatch(text.Trim())) || txtBox.Text == "0")
+            if(txtBox.Text == null || !(numberRegex.IsMatch(txtBox.Text.Trim())) || txtBox.Text == "0")
             {
                 lblResultMessage.Text = "Invalid number. Please insert a valid number";
             }
@@ -105,58 +103,50 @@ namespace Converter
 
         private void btnCelsiusFahrenheit_Click(object sender, EventArgs e)
         {
-            string txt;
             int formula = 1;
-            CalculatingTemperature(out txt, ref formula);
+            CalculatingTemperature(ref formula);
         }
 
         private void btnFahrenheitCelsius_Click(object sender, EventArgs e)
         {
-            string txt;
             int formula = 2;
-            CalculatingTemperature(out txt, ref formula);
+            CalculatingTemperature(ref formula);
         }
 
         private void btnFeetMeters_Click(object sender, EventArgs e)
         {
-            string text;
             int formulaX = 1;
-            CalculatingMeasures(out text, ref formulaX);
+            CalculatingMeasures(ref formulaX);
         }
 
         private void btnMeterFeet_Click(object sender, EventArgs e)
         {
-            string text;
             int formulaX = 2;
-            CalculatingMeasures(out text, ref formulaX);
+            CalculatingMeasures(ref formulaX);
         }
 
         private void btnInchesCentimeters_Click(object sender, EventArgs e)
         {
-            string text;
             int formulaX = 3;
-            CalculatingMeasures(out text, ref formulaX);
+            CalculatingMeasures(ref formulaX);
         }
 
         private void btnCentimeterInches_Click(object sender, EventArgs e)
         {
-            string text;
             int formulaX = 4;
-            CalculatingMeasures(out text, ref formulaX);
+            CalculatingMeasures(ref formulaX);
         }
 
         private void btnPoundsKilogram_Click(object sender, EventArgs e)
         {
-            string text;
             int formulaX = 5;
-            CalculatingMeasures(out text, ref formulaX);
+            CalculatingMeasures(ref formulaX);
         }
 
         private void btnKilogramPounds_Click(object sender, EventArgs e)
         {
-            string text;
             int formulaX = 6;
-            CalculatingMeasures(out text, ref formulaX);
+            CalculatingMeasures(ref formulaX);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
