@@ -98,6 +98,7 @@ namespace Converter
             this.btnKilogramPounds.TabIndex = 8;
             this.btnKilogramPounds.Text = "Kilogram to Pounds";
             this.btnKilogramPounds.UseVisualStyleBackColor = true;
+            this.btnKilogramPounds.Click += new System.EventHandler(this.btnKilogramPounds_Click);
             // 
             // btnPoundsKilogram
             // 
@@ -107,6 +108,7 @@ namespace Converter
             this.btnPoundsKilogram.TabIndex = 7;
             this.btnPoundsKilogram.Text = "Pounds to Kilogram";
             this.btnPoundsKilogram.UseVisualStyleBackColor = true;
+            this.btnPoundsKilogram.Click += new System.EventHandler(this.btnPoundsKilogram_Click);
             // 
             // btnCentimeterInches
             // 
@@ -116,6 +118,7 @@ namespace Converter
             this.btnCentimeterInches.TabIndex = 6;
             this.btnCentimeterInches.Text = "Centimeters to Inches";
             this.btnCentimeterInches.UseVisualStyleBackColor = true;
+            this.btnCentimeterInches.Click += new System.EventHandler(this.btnCentimeterInches_Click);
             // 
             // btnInchesCentimeters
             // 
@@ -125,6 +128,7 @@ namespace Converter
             this.btnInchesCentimeters.TabIndex = 5;
             this.btnInchesCentimeters.Text = "Inches to Centimeters";
             this.btnInchesCentimeters.UseVisualStyleBackColor = true;
+            this.btnInchesCentimeters.Click += new System.EventHandler(this.btnInchesCentimeters_Click);
             // 
             // btnClear
             // 
@@ -134,6 +138,7 @@ namespace Converter
             this.btnClear.TabIndex = 9;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // lblResult
             // 

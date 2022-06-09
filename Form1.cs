@@ -71,7 +71,7 @@ namespace Converter
         {
             Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
 
-            if (numberRegex.IsMatch(txtBox.Text.Trim()))
+            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
             {
                 double number = double.Parse(txtBox.Text);
                 double result = number / 3.2808;
@@ -87,16 +87,87 @@ namespace Converter
         {
             Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
 
-            if (numberRegex.IsMatch(txtBox.Text.Trim()))
+            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
             {
                 double number = double.Parse(txtBox.Text);
                 double result = number * 3.2808;
-                lblResultMessage.Text = $"{Math.Round(result, 2)} meters";
+                lblResultMessage.Text = $"{Math.Round(result, 2)} feet";
             }
             else
             {
                 lblResultMessage.Text = "Invalid number. Please insert a valid number";
             }
+        }
+
+        private void btnInchesCentimeters_Click(object sender, EventArgs e)
+        {
+            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
+
+            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
+            {
+                double number = double.Parse(txtBox.Text);
+                double result = number * 2.54;
+                lblResultMessage.Text = $"{Math.Round(result, 2)} centimeters";
+            }
+            else
+            {
+                lblResultMessage.Text = "Invalid number. Please insert a valid number";
+            }
+        }
+
+        private void btnCentimeterInches_Click(object sender, EventArgs e)
+        {
+            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
+
+            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
+            {
+                double number = double.Parse(txtBox.Text);
+                double result = number / 2.54;
+                lblResultMessage.Text = $"{Math.Round(result, 2)} inches";
+            }
+            else
+            {
+                lblResultMessage.Text = "Invalid number. Please insert a valid number";
+            }
+        }
+
+        private void btnPoundsKilogram_Click(object sender, EventArgs e)
+        {
+            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
+
+            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
+            {
+                double number = double.Parse(txtBox.Text);
+                double result = number / 2.205;
+                lblResultMessage.Text = $"{Math.Round(result, 2)} kilograms";
+            }
+            else
+            {
+                lblResultMessage.Text = "Invalid number. Please insert a valid number";
+            }
+        }
+
+        private void btnKilogramPounds_Click(object sender, EventArgs e)
+        {
+            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
+
+            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
+            {
+                double number = double.Parse(txtBox.Text);
+                double result = number * 2.205;
+                lblResultMessage.Text = $"{Math.Round(result, 2)} pounds";
+            }
+            else
+            {
+                lblResultMessage.Text = "Invalid number. Please insert a valid number";
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtBox.Text = null;
+            lblResultMessage.Text = null;
+            txtBox.Focus();
         }
     }
 }
