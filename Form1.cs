@@ -33,138 +33,135 @@ namespace Converter
         {
             InitializeComponent();
         }
-
-        private void btnCelsiusFahrenheit_Click(object sender, EventArgs e)
+        
+        //Method to calculate de temperatures
+        private void CalculatingTemperature(out string txt, ref int formula)
         {
+            //Setting up a regular expression to the input (accepting negative and decimal numbers)
             Regex numberRegex = new Regex(@"^-?[0-9][0-9,\.]+$");
+            txt = txtBox.Text;
 
-            if (numberRegex.IsMatch(txtBox.Text.Trim()))
-            {
-                double number = double.Parse(txtBox.Text);
-                double result = (number * 1.8) + 32;
-                lblResultMessage.Text = $"{Math.Round(result, 2)} Fahrenheit";
-            }
-            else
+            if(txt == null || !(numberRegex.IsMatch(txt.Trim())))
             {
                 lblResultMessage.Text = "Invalid number. Please insert a valid number";
             }
+            else
+            {
+                switch (formula)
+                {
+                    case 1:
+                        //Calculating C to F and rounding the number to two decimals
+                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txt) * 1.8) + 32), 2)} Fahrenheit";
+                        break;
+                    case 2:
+                        //Calculating F to C and rounding the number to two decimals
+                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txt) - 32) * 0.556), 2)} Celsius";
+                        break;
+                }
+            }
+        }
 
+        private void CalculatingMeasures(out string text, ref int formulaX)
+        {
+            //Setting up a regular expression to the input (accepting decimal numbers)
+            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
+            text = txtBox.Text;
+
+            if(txtBox.Text == null || !(numberRegex.IsMatch(text.Trim())) || txtBox.Text == "0")
+            {
+                lblResultMessage.Text = "Invalid number. Please insert a valid number";
+            }
+            else
+            {
+                switch(formulaX)
+                {
+                    case 1:
+                        //Calculating ft to m and rounding the number to two decimal places
+                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txtBox.Text)) / 3.2808), 2)} meters";
+                        break;
+                    case 2:
+                        //Calculating m to ft and rounding the number to two decimal places
+                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txtBox.Text)) * 3.2808), 2)} feet";
+                        break;
+                    case 3:
+                        //Calculating inches to cm and rounding the number to two decimal places
+                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txtBox.Text)) * 2.54), 2)} centimeters";
+                        break;
+                    case 4:
+                        //Calculating inches to cm and rounding the number to two decimal places
+                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txtBox.Text)) / 2.54), 2)} centimeters";
+                        break;
+                    case 5:
+                        //Calculating pounds to kg and rounding the number to two decimal places
+                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txtBox.Text)) / 2.205), 2)} kilograms";
+                        break;
+                    case 6:
+                        //Calculating kg to pounds and rounding the number to two decimal places
+                        lblResultMessage.Text = $"{Math.Round(((double.Parse(txtBox.Text)) * 2.205), 2)} pounds";
+                        break;
+                }
+            }
+        }
+
+        private void btnCelsiusFahrenheit_Click(object sender, EventArgs e)
+        {
+            string txt;
+            int formula = 1;
+            CalculatingTemperature(out txt, ref formula);
         }
 
         private void btnFahrenheitCelsius_Click(object sender, EventArgs e)
         {
-            Regex numberRegex = new Regex(@"^-?[0-9][0-9,\.]+$");
-
-            if (numberRegex.IsMatch(txtBox.Text.Trim()))
-            {
-                double number = double.Parse(txtBox.Text);
-                double result = (number - 32) * 0.5556;
-                lblResultMessage.Text = $"{Math.Round(result, 2)} Celsius";
-            }
-            else
-            {
-                lblResultMessage.Text = "Invalid number. Please insert a valid number";
-            }
+            string txt;
+            int formula = 2;
+            CalculatingTemperature(out txt, ref formula);
         }
 
         private void btnFeetMeters_Click(object sender, EventArgs e)
         {
-            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
-
-            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
-            {
-                double number = double.Parse(txtBox.Text);
-                double result = number / 3.2808;
-                lblResultMessage.Text = $"{Math.Round(result, 2)} meters";
-            }
-            else
-            {
-                lblResultMessage.Text = "Invalid number. Please insert a valid number";
-            }
+            string text;
+            int formulaX = 1;
+            CalculatingMeasures(out text, ref formulaX);
         }
 
         private void btnMeterFeet_Click(object sender, EventArgs e)
         {
-            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
-
-            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
-            {
-                double number = double.Parse(txtBox.Text);
-                double result = number * 3.2808;
-                lblResultMessage.Text = $"{Math.Round(result, 2)} feet";
-            }
-            else
-            {
-                lblResultMessage.Text = "Invalid number. Please insert a valid number";
-            }
+            string text;
+            int formulaX = 2;
+            CalculatingMeasures(out text, ref formulaX);
         }
 
         private void btnInchesCentimeters_Click(object sender, EventArgs e)
         {
-            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
-
-            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
-            {
-                double number = double.Parse(txtBox.Text);
-                double result = number * 2.54;
-                lblResultMessage.Text = $"{Math.Round(result, 2)} centimeters";
-            }
-            else
-            {
-                lblResultMessage.Text = "Invalid number. Please insert a valid number";
-            }
+            string text;
+            int formulaX = 3;
+            CalculatingMeasures(out text, ref formulaX);
         }
 
         private void btnCentimeterInches_Click(object sender, EventArgs e)
         {
-            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
-
-            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
-            {
-                double number = double.Parse(txtBox.Text);
-                double result = number / 2.54;
-                lblResultMessage.Text = $"{Math.Round(result, 2)} inches";
-            }
-            else
-            {
-                lblResultMessage.Text = "Invalid number. Please insert a valid number";
-            }
+            string text;
+            int formulaX = 4;
+            CalculatingMeasures(out text, ref formulaX);
         }
 
         private void btnPoundsKilogram_Click(object sender, EventArgs e)
         {
-            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
-
-            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
-            {
-                double number = double.Parse(txtBox.Text);
-                double result = number / 2.205;
-                lblResultMessage.Text = $"{Math.Round(result, 2)} kilograms";
-            }
-            else
-            {
-                lblResultMessage.Text = "Invalid number. Please insert a valid number";
-            }
+            string text;
+            int formulaX = 5;
+            CalculatingMeasures(out text, ref formulaX);
         }
 
         private void btnKilogramPounds_Click(object sender, EventArgs e)
         {
-            Regex numberRegex = new Regex(@"^[0-9][0-9,\.]+$");
-
-            if (numberRegex.IsMatch(txtBox.Text.Trim()) || !(txtBox.Text == "0"))
-            {
-                double number = double.Parse(txtBox.Text);
-                double result = number * 2.205;
-                lblResultMessage.Text = $"{Math.Round(result, 2)} pounds";
-            }
-            else
-            {
-                lblResultMessage.Text = "Invalid number. Please insert a valid number";
-            }
+            string text;
+            int formulaX = 6;
+            CalculatingMeasures(out text, ref formulaX);
         }
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            //Cleaning textbox and label and focusing to textbox
             txtBox.Text = null;
             lblResultMessage.Text = null;
             txtBox.Focus();
